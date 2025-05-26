@@ -1,11 +1,10 @@
 from douglas_peucker import compress_dp_with_projection as dp
-from TopDown_TimeRatio import compress_td_tr_with_projection as tdtr
+from topDown_TimeRatio import compress_td_tr_with_projection as tdtr
 import pandas as pd
 def compress_trajectory(input_path,output_path,id_col='id',time_col='time',lon_col='lon',lat_col='lat',method='dp',threshold=0.0001,time_weight=0.5):
     """
-    对输入轨迹进行压缩处理
-
-    参数:
+    compress the input trajectory
+    parameters:
     - input_path: str，input the trajectories csv file
     - output_path: str，compressed saved file
     - id_col, time_col, lon_col, lat_col: str，atttribute's name
@@ -24,7 +23,7 @@ def compress_trajectory(input_path,output_path,id_col='id',time_col='time',lon_c
         elif method == 'td-tr':
             compressed_traj = tdtr(traj, time_col, lon_col, lat_col,epsilon=threshold,alpha=time_weight) # add the method
         elif method == 'sw':
-            compressed_traj = dp(traj, time_col, lon_col, lat_col)
+            compressed_traj = dp(traj, time_col, lon_col, lat_col)  ## 在这里修改为第三个方法
         compressed_traj=compressed_traj.copy()
         compressed_traj[id_col] = traj_id
         compressed_data = pd.concat([compressed_data, compressed_traj])
