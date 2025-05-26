@@ -1,26 +1,24 @@
 # GP_2025
-# Trajectory Compression Toolkit
+# 🛰️ Trajectory Compression Toolkit
 
-A Python toolkit for compressing GPS trajectory data using algorithms like:
+A Python toolkit to compress GPS trajectory data using multiple algorithms including:
+
 - Douglas-Peucker (DP)
 - Top-Down Time Ratio (TD-TR)
 - Sliding Window
 
-## 📦 Features
+This package is useful for data preprocessing in GPS trace simplification, map matching, mobility analytics, and other geospatial tasks.
 
-- Easy-to-use interface
-- Supports multiple compression algorithms
-- Customizable threshold & fields
+---
 
-from compressor import compress_trajectory
+## ⚙️ Requirements
 
-compress_trajectory(
-    input_path='input.csv',
-    output_path='output.csv',
-    id_col='user_id',
-    time_col='timestamp',
-    lon_col='lon',
-    lat_col='lat',
-    method='dp',
-    threshold=0.0001
-)
+- Python **3.9**
+- pandas
+- geopandas
+
+Install dependencies:
+
+pandas geopandas
+
+
