@@ -19,7 +19,7 @@ This package is useful for data preprocessing in GPS trace simplification, map m
 
 Install dependencies:
 
-pandas geopandas
+pandas geopandas shapely
 
 ---------
 ## 🛠️ Usage
