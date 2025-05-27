@@ -1,5 +1,6 @@
 from douglas_peucker import compress_dp_with_projection as dp
 from topDown_TimeRatio import compress_td_tr_with_projection as tdtr
+from slidingWindow import compress_sw_with_projection as sw
 import pandas as pd
 def compress_trajectory(input_path,output_path,id_col='id',time_col='time',lon_col='lon',lat_col='lat',method='dp',threshold=0.0001,time_weight=0.5):
     """
@@ -19,11 +20,11 @@ def compress_trajectory(input_path,output_path,id_col='id',time_col='time',lon_c
     # compressed_traj = pd.DataFrame(columns=[id_col,time_col, lon_col, lat_col])
     for traj_id,traj in trajectories:
         if method == 'dp':
-            compressed_traj=dp(traj,lon_col,lat_col,epsilon=threshold)
+            compressed_traj = dp(traj,lon_col,lat_col,epsilon=threshold)
         elif method == 'td-tr':
             compressed_traj = tdtr(traj, time_col, lon_col, lat_col,epsilon=threshold,alpha=time_weight) # add the method
         elif method == 'sw':
-            compressed_traj = dp(traj, time_col, lon_col, lat_col)  ## 在这里修改为第三个方法
+            compressed_traj = sw(traj, lon_col, lat_col, epsilon=threshold)
         compressed_traj=compressed_traj.copy()
         compressed_traj[id_col] = traj_id
         compressed_data = pd.concat([compressed_data, compressed_traj])
