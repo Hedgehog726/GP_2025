@@ -7,15 +7,15 @@ import matplotlib.pyplot as plt
 from shapely.geometry import LineString
 import contextily as ctx
 
-def compress_trajectory(input_path,output_path,id_col='id',time_col='time',lon_col='lon',lat_col='lat',method='dp',threshold=0.0001,time_weight=0.5):
+def compress_trajectory(input_path,output_path,id_col='id',time_col='time',lon_col='lon',lat_col='lat',method='dp',threshold=50,time_weight=0.5):
     """
     compress the input trajectory
-    parameters:
+
     - input_path: str，input the trajectories csv file
     - output_path: str，compressed saved file
     - id_col, time_col, lon_col, lat_col: str，atttribute's name
     - method: str，compression name，option: 'dp'（Douglas-Peucker）, 'td-tr', 'sw'（Sliding Window）
-    - threshold: float，compression threshold, meter or ratio
+    - threshold: float，compression threshold, meter
     - time_weight: float，for TD-TR time weight
     """
     pass  # implemention
@@ -40,11 +40,11 @@ def compress_trajectory(input_path,output_path,id_col='id',time_col='time',lon_c
 def visualize_points(csv_path, lon_col='lon', lat_col='lat', id_col='mmsi', crs='EPSG:4326', output_image='trajectoryPoints.png'):
     """
     Visualize the trajectory points
-    Parameters:
-    csv_path: str - path to the trajectory CSV
-    lon_col, lat_col, id_col: str - column names for lon/lat/id
-    crs_from: str - input CRS
-    output_image: str - file name to save the image
+
+    - csv_path: str - path to the trajectory CSV
+    - lon_col, lat_col, id_col: str - column names for lon/lat/id
+    - crs_from: str - input CRS
+    - output_image: str - file name to save the image
     """
     df = pd.read_csv(csv_path)
     
@@ -67,13 +67,13 @@ def visualize_trajectory_compare(original_csv, compressed_csv,
                                       output_image='trajectory.png'):
     """
     Compare the trajectories before and after the compression
-    Parameters:
-        original_csv: str - path to the original trajectory CSV
-        compressed_csv: str - path to the compressed trajectory CSV
-        lon_col, lat_col, id_col: str - column names for lon/lat/id
-        crs_from: str - input CRS
-        crs_to: str - projected CRS for accurate plotting
-        output_image: str - file name to save the image
+
+    - original_csv: str - path to the original trajectory CSV
+    - compressed_csv: str - path to the compressed trajectory CSV
+    - lon_col, lat_col, id_col: str - column names for lon/lat/id
+    - crs_from: str - input CRS
+    - crs_to: str - projected CRS for accurate plotting
+    - output_image: str - file name to save the image
     """
 
 
@@ -132,3 +132,17 @@ def visualize_trajectory_compare(original_csv, compressed_csv,
     plt.title("Trajectory Comparison")
     plt.savefig(output_image, dpi=300)
     plt.show()
+
+
+def export_csv_to_vector(csv_path, output_path, lon_col='lon', lat_col='lat', crs='EPSG:4326'):
+    """
+    export the CSV trajectory to a vector file（GeoJSON、Shapefile、GPKG...）
+    
+    - csv_path: csv path
+    - output_path: export path，the format depends on the suffix（.shp / .geojson / .gpkg）
+    """
+    df = pd.read_csv(csv_path)
+    gdf = gpd.GeoDataFrame(df, geometry=gpd.points_from_xy(df[lon_col], df[lat_col]), crs=crs)
+
+    gdf.to_file(output_path)
+    print(f"Successfully export it to: {output_path}")
