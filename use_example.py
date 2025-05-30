@@ -1,6 +1,6 @@
 from trajectory_compression import compress_trajectory
-from visualizer import visualize_trajectory_compare
-from visualizer import visualize_points
+from trajectory_compression import visualize_trajectory_compare
+from trajectory_compression import visualize_points
 
 # compress_trajectory('./data/processed.csv', './data/dp_compressed.csv',
 #                     'mmsi','time','lon','lat','dp',threshold=50)
