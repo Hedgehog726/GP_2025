@@ -24,7 +24,7 @@ This package is useful for data preprocessing in GPS trace simplification, map m
 ---------
 ## ⚙️ Installation
 run the following command
-`pip install git+https://github.com/Hedgehog726/GP_2025.git`
+`pip install git+https://github.com/Hedgehog726/TrajectoryCompressionTool.git`
 
 
 ---------
