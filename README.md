@@ -1,4 +1,4 @@
-# GP_2025
+# GP_2024-2025
 # 🛰️ Trajectory Compression Toolkit
 
 A Python toolkit to compress GPS trajectory data using multiple algorithms including:
@@ -19,7 +19,7 @@ This package is useful for data preprocessing in GPS trace simplification, map m
 
 Install dependencies:
 
-pandas geopandas shapely
+pandas geopandas shapely contextily
 
 ---------
 ## 🛠️ Usage
@@ -47,7 +47,6 @@ id,timestamp,lon,lat
 1,2024-01-01 08:05:00,121.4740,31.2308
 1,2024-01-01 08:10:00,121.4745,31.2312
 ...
-
 
 
 
