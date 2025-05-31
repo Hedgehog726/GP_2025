@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: trajectory_compression
+Version: 0.1.0
+Summary: A Python library for compressing trajectories
+Requires-Dist: pandas
+Requires-Dist: geopandas
+Requires-Dist: matplotlib
+Requires-Dist: contextily
+Requires-Dist: shapely

@@ -1,6 +1,6 @@
-from douglas_peucker import compress_dp_with_projection as dp
-from topDown_TimeRatio import compress_td_tr_with_projection as tdtr
-from slidingWindow import compress_sw_with_projection as sw
+from .douglas_peucker import compress_dp_with_projection as dp
+from .topDown_TimeRatio import compress_td_tr_with_projection as tdtr
+from .slidingWindow import compress_sw_with_projection as sw
 import geopandas as gpd
 import pandas as pd
 import matplotlib.pyplot as plt
@@ -37,7 +37,7 @@ def compress_trajectory(input_path,output_path,id_col='id',time_col='time',lon_c
     compressed_data.to_csv(output_path,index=False)
 
 
-def visualize_points(csv_path, lon_col='lon', lat_col='lat', id_col='mmsi', crs='EPSG:4326', output_image='trajectoryPoints.png'):
+def visualize_points(csv_path, lon_col='lon', lat_col='lat', id_col='mmsi', crs='EPSG:4326', output_image='./image/trajectoryPoints.png'):
     """
     Visualize the trajectory points
 
@@ -64,7 +64,7 @@ def visualize_points(csv_path, lon_col='lon', lat_col='lat', id_col='mmsi', crs=
 def visualize_trajectory_compare(original_csv, compressed_csv, 
                                       lon_col='lon', lat_col='lat', id_col='mmsi',
                                       crs_from='EPSG:4326', crs_to='EPSG:3857',
-                                      output_image='trajectory.png'):
+                                      output_image='./image/trajectory.png'):
     """
     Compare the trajectories before and after the compression
 

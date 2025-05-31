@@ -6,6 +6,7 @@ A Python toolkit to compress GPS trajectory data using multiple algorithms inclu
 - Douglas-Peucker (DP)
 - Top-Down Time Ratio (TD-TR)
 - Sliding Window
+
 And it also provide the functionality of visualization and export
 This package is useful for data preprocessing in GPS trace simplification, map matching, mobility analytics, and other geospatial tasks.
 
@@ -16,10 +17,9 @@ This package is useful for data preprocessing in GPS trace simplification, map m
 - Python **3.9**
 - pandas
 - geopandas
+- shapely
+- contextily
 
-Install dependencies:
-
-pandas geopandas shapely contextily
 
 ---------
 ## 🛠️ Usage
