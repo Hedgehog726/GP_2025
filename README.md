@@ -22,6 +22,11 @@ Install dependencies:
 pandas geopandas shapely contextily
 
 ---------
+
+## compression method:
+### dp: douglas peaucker
+### td-tr:topdown time ration
+### sw: sliding window
 ## 🛠️ Usage
 from trajectory_compression import compress_trajectory
 
@@ -36,6 +41,8 @@ compress_trajectory(
     threshold=50,
     time_weight=0.6       # only used by 'td-tr'
 )
+usage example: /use_example.py
+
 
 ## 📥 Input Data Format
 
