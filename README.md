@@ -8,6 +8,7 @@ A Python toolkit to compress GPS trajectory data using multiple algorithms inclu
 - Sliding Window
 
 And it also provide the functionality of visualization and export
+
 This package is useful for data preprocessing in GPS trace simplification, map matching, mobility analytics, and other geospatial tasks.
 
 ---
@@ -20,23 +21,22 @@ This package is useful for data preprocessing in GPS trace simplification, map m
 - shapely
 - contextily
 
+---------
+## ⚙️ Installation
+run the following command
+`pip install git+https://github.com/Hedgehog726/GP_2025.git`
+
 
 ---------
 ## 🛠️ Usage
-from trajectory_compression import compress_trajectory
+```
+from trajectory_compression import trajectory_compression
 
-compress_trajectory(
-    input_path='raw_trajectory.csv',
-    output_path='compressed_trajectory.csv',
-    id_col='user_id',
-    time_col='timestamp',
-    lon_col='lon',
-    lat_col='lat',
-    method='td-tr',       # or 'dp', 'sw'
-    threshold=50,
-    time_weight=0.6       # only used by 'td-tr'
-)
-usage example: /use_example.py
+trajectory_compression.compress_trajectory('./data/processed.csv', './data/dp_compressed.csv',
+                    'mmsi','time','lon','lat','dp',threshold=50)
+```
+
+usage example: Example.ipynb
 
 
 ## 📥 Input Data Format
